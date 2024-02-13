@@ -75,14 +75,6 @@ class Tank{
     Animal animal = new clownFish(x,y,xSpeed,ySpeed,xWidth,yHeight,this);
     animals.add(animal);
   }
-  void addCrabAlbert(int x, int y){
-    int xWidth = int(random(10,30));
-    int yHeight = int (random(5,10));
-    float xSpeed = int(random(-5,5));
-    float ySpeed = int(random(-5,5));
-    Animal animal = new crabAlbert(x,y,xSpeed,ySpeed,xWidth,yHeight,this);
-    animals.add(animal);
-  }
   void addRock(int x, int y){
     Animal animal = new rock(x,y);
     animals.add(animal);
@@ -93,7 +85,6 @@ class Tank{
   }
   void addGoldFish(int x, int y){
     Goldfish animal = new Goldfish(x,y);
-    goldfishes.add(animal);
   }
   void addTurtle(int x, int y){
     Animal animal = new Turtle(x,y);

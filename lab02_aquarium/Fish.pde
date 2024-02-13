@@ -12,7 +12,7 @@ class Fish extends Animal{ //My animal
     fill(255,150,0);
     translate(x,y);
     if(xSpeed < 0){
-      scale(-1.0,1.0);
+      scale(-1,1);
     }
       beginShape();
       vertex(0,5*yScaleFactor);

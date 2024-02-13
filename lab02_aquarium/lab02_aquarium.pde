@@ -1,7 +1,6 @@
 Tank t;
 Fish f0;
 Crab c0;
-ArrayList<Goldfish> goldfishes;
 int tankX = 0;
 int tankY = 50;
 int floorH = 100;
@@ -17,7 +16,6 @@ void setup() {
   t.display();
   t.addFish(width/2,height/2);
   t.addCrab(width/2,tankY+tankH-(floorH/2));
-  goldfishes = new ArrayList<Goldfish>();
 }//setup
 
 
@@ -45,18 +43,15 @@ void keyPressed(){
     t.addClownFish(mouseX,mouseY); //Albert's clownFish
   }
   if(key == '4'){
-    t.addCrabAlbert(mouseX,mouseY); //Albert's crab
-  }
-  if(key == '5'){
     t.addRock(mouseX,mouseY); //Haocheng's rock
   }
-  if(key == '6'){
+  if(key == '5'){
     t.addCrabHaocheng(mouseX,mouseY); //Haocheng's crab
   }
-  if(key == '7'){
+  if(key == '6'){
     t.addGoldFish(mouseX,mouseY); //Richie's Goldfish
   }
-  if(key == '8'){
+  if(key == '7'){
     t.addTurtle(mouseX,mouseY); //Richie's Turtle
   }
 }

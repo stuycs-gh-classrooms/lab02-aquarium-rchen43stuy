@@ -1,7 +1,6 @@
 class Goldfish extends Animal { //Richie's animals
   boolean perished;
   boolean STOP;
-  boolean alive;
   float hunger;
   int cx;
   int cy;
@@ -57,10 +56,10 @@ class Goldfish extends Animal { //Richie's animals
         circle(cx + xWidth /4, cy - yHeight/5, sqrt(log(fsize)));
       }
       if(hunger < 6){ //eats if hungry
-        for(int i = 0; i < goldfishes.size(); i++){
-          if(goldfishes.get(i) != this){
-            checkEat(goldfishes.get(i));
-          }
+        for(int i = 0; i < t.animals.size(); i++){
+            if(t.animals.get(i) instanceof Goldfish){
+              checkEat((Goldfish) t.animals.get(i));
+            }
         }
       }
       if (hunger<0) {

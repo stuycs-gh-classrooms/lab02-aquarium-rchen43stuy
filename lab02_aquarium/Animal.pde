@@ -1,4 +1,5 @@
 class Animal{
+  boolean alive;
   float x;
   float y;
   float xSpeed;
@@ -19,26 +20,17 @@ class Animal{
     xWidth = xW;
     yHeight = yH;
     tank = t; //tank is t specified
+    alive = true;
   }
   Animal(int xx, int yy) { //Haocheng's code adapted to work
    x = xx;
    y = yy;
    tank = t; //assuming tank is t
-   cc = #ff00f7;
-   xSpeed = ySpeed = 1;
+   xSpeed = int(random(-1,2));
+   ySpeed = int(random(-1,2));
    xWidth = 40;
    yHeight = 20;
-   int xd = int(random(2));
-   int yd = int(random(2));
-   if (xd == 0) {
-    xSpeed = 1; 
-   }
-   else {xSpeed=-1;}
-   if (yd == 0) {
-     ySpeed = 1; 
-   }
-   else {ySpeed=-1;}
-   yHeight = 20;
+   alive = true;
   }
   void display(){
     fill(255,0,255);
