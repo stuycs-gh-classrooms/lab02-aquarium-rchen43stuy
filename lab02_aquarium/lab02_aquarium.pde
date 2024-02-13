@@ -1,6 +1,7 @@
 Tank t;
 Fish f0;
 Crab c0;
+ArrayList<Goldfish> goldfishes;
 int tankX = 0;
 int tankY = 50;
 int floorH = 100;
@@ -16,6 +17,7 @@ void setup() {
   t.display();
   t.addFish(width/2,height/2);
   t.addCrab(width/2,tankY+tankH-(floorH/2));
+  goldfishes = new ArrayList<Goldfish>();
 }//setup
 
 

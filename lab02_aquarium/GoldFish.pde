@@ -18,7 +18,7 @@ class Goldfish extends Animal { //Richie's animals
     hunger = 10;
     t.addAnimal(this);
     fsize = xWidth * yHeight * PI;
-    ratio = yHeight/xWidth;
+    ratio = float(yHeight)/float(xWidth);
   }
   Goldfish(int x, int y, int w, int h) {
     this(x, y);
@@ -27,7 +27,7 @@ class Goldfish extends Animal { //Richie's animals
     cx = x + xWidth/2;
     cy = y + yHeight/2;
     fsize = xWidth * yHeight * PI; //recompute size and ratio
-    ratio = yHeight/xWidth;
+    ratio = float(yHeight)/float(xWidth);
   }
   void display() {
     if(!STOP){
@@ -56,9 +56,17 @@ class Goldfish extends Animal { //Richie's animals
         fill(#000000);
         circle(cx + xWidth /4, cy - yHeight/5, sqrt(log(fsize)));
       }
+      if(hunger < 6){ //eats if hungry
+        for(int i = 0; i < goldfishes.size(); i++){
+          if(goldfishes.get(i) != this){
+            checkEat(goldfishes.get(i));
+          }
+        }
+      }
       if (hunger<0) {
         perish();
       }
+      
     }
     }}
   void checkEat(Goldfish other) {

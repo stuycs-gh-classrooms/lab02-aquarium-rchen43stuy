@@ -92,7 +92,8 @@ class Tank{
     animals.add(animal);
   }
   void addGoldFish(int x, int y){
-    Animal animal = new Goldfish(x,y);
+    Goldfish animal = new Goldfish(x,y);
+    goldfishes.add(animal);
   }
   void addTurtle(int x, int y){
     Animal animal = new Turtle(x,y);
