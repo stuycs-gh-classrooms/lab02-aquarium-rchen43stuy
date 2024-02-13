@@ -90,4 +90,12 @@ class Tank{
     Animal animal = new Turtle(x,y);
     animals.add(animal);
   }
+  void addFishFood(int x, int y){
+    int xWidth = int(random(7,10));
+    int yHeight = int(random(5,7));
+    float xSpeed = random(-.2,.2);
+    float ySpeed = random(-.2,.2);
+    Animal animal = new FishFood(x,y,xSpeed,ySpeed,xWidth,yHeight,this);
+    animals.add(animal);
+  }
 }

@@ -1,13 +1,13 @@
 class Animal{
   boolean alive;
+  int hunger;
   float x;
   float y;
   float xSpeed;
   float ySpeed;
   int xWidth;
   int yHeight;
-  
-  color cc; //for haocheng's code
+  color cc;
   
   float ratio; //for richie's code
   
@@ -21,19 +21,23 @@ class Animal{
     yHeight = yH;
     tank = t; //tank is t specified
     alive = true;
+    hunger = 15;
+    cc = color(255,0,255);
   }
   Animal(int xx, int yy) { //Haocheng's code adapted to work
    x = xx;
    y = yy;
    tank = t; //assuming tank is t
-   xSpeed = int(random(-1,2));
+   xSpeed = int(random(-2,2));
    ySpeed = int(random(-1,2));
    xWidth = 40;
    yHeight = 20;
    alive = true;
+   hunger = 15;
+   cc = color(255,0,255);
   }
   void display(){
-    fill(255,0,255);
+    fill(cc);
     rect(x,y,xWidth,yHeight);
   }
   void move(){

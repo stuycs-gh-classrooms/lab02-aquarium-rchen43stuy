@@ -1,10 +1,6 @@
 class clownFish extends Animal{ //Albert's animals
-  boolean alive;
-  color aC;
 clownFish(int xpos, int ypos, float xs, float ys,int xW, int yH, Tank t){
     super(xpos,ypos,xs,ys,xW,yH,t);
-     alive = true;
-     aC = color(int(random(0,255)),int(random(0,255)),int(random(0,255)));
   }
 
 void move(){

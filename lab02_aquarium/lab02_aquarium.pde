@@ -14,8 +14,6 @@ void setup() {
   tankH = height - 50;
   t = new Tank(tankX, tankY, tankW, tankH, floorH);
   t.display();
-  t.addFish(width/2,height/2);
-  t.addCrab(width/2,tankY+tankH-(floorH/2));
 }//setup
 
 
@@ -30,7 +28,7 @@ void draw() {
 }
 
 void mouseClicked() {
-  t.addAnimal(mouseX, mouseY);
+  t.addFishFood(mouseX, mouseY);
 }
 void keyPressed(){
   if(key == '1'){
