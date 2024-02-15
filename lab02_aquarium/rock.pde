@@ -1,5 +1,5 @@
 class rock extends Animal { //Haocheng's "animals"
- rock(int xx, int yy) {
+ rock(int xx, int yy) { //rocks must be petted to stay alive
   super(xx, yy);
   ySpeed = 2; 
   cc = #636363;

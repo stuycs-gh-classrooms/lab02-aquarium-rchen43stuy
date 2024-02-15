@@ -1,6 +1,8 @@
 class clownFish extends Animal{ //Albert's animals
+  boolean hungry;
   clownFish(int xpos, int ypos, float xs, float ys,int xW, int yH, Tank t){
       super(xpos,ypos,xs,ys,xW,yH,t);
+      hunger = 100;
     }
 
   void move(){
@@ -8,7 +10,19 @@ class clownFish extends Animal{ //Albert's animals
     this.y += ySpeed/2;
     if (x <= 0 || x+xWidth >= tankX+tankW){xSpeed = xSpeed * -1;}
     if (y <= tankY || y+yHeight >=tankY+tankH-floorH){ySpeed = ySpeed * -1;}
-    if(closestFood() != null){
+    if(frameCount % 5 == 0){
+      hunger--;
+    }
+    if(hunger < 50){
+      hungry = true;
+    }
+    else{
+      hungry = false;
+    }
+    if(hunger <= 0){
+      die();
+    }
+    if(closestFood() != null && hungry){
       seek(closestFood());
       checkEat(closestFood());
     }
@@ -74,7 +88,12 @@ class clownFish extends Animal{ //Albert's animals
     return minFood;
   }
   void display(){
-    fill(255,165,0);
+    if(!hungry){
+      fill(255,165,0);
+    }
+    else{
+      fill(255,255,0);
+    }
     rect(x,y,xWidth,yHeight);
     fill(255,255,255);
     rect(x + xWidth/2, y, xWidth/3, yHeight);
@@ -82,6 +101,7 @@ class clownFish extends Animal{ //Albert's animals
   void checkEat(FishFood food){
     if((withinX(food)) && (withinY(food))){
       tank.animals.remove(food);
+      hunger += 100;
     }
   }
   boolean withinX(Animal food){
