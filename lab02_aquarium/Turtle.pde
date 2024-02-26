@@ -7,17 +7,32 @@ class Turtle extends Animal { //Richie's animals
     yHeight = int(random(50, 55));
   }
   void display() {
-    fill(0, 48, 32);
-    arc(x + xWidth/3, y + yHeight/2, xWidth/1.5, yHeight, PI, 2*PI, CHORD);
-    fill(0, 200, 0);
-    rect(x, y + yHeight/2, xWidth/6, yHeight/2);
-    rect(x + xWidth/2, y + yHeight/2, xWidth/6, yHeight/2);
-    if (xSpeed>0) {
-      circle(x + 5 * xWidth/6, y + yHeight/2, xWidth/3);
-    }
-    if (xSpeed<0) {
-      circle(x - xWidth/6, y + yHeight/2, xWidth/3);
-    }
+    if(alive){
+      fill(0, 48, 32);
+      arc(x + xWidth/3, y + yHeight/2, xWidth/1.5, yHeight, PI, 2*PI, CHORD);
+      fill(0, 200, 0);
+      rect(x, y + yHeight/2, xWidth/6, yHeight/2);
+      rect(x + xWidth/2, y + yHeight/2, xWidth/6, yHeight/2);
+      if (xSpeed>0) {
+        circle(x + 5 * xWidth/6, y + yHeight/2, xWidth/3);
+      }
+      if (xSpeed<0) {
+        circle(x - xWidth/6, y + yHeight/2, xWidth/3);
+      }
+   }
+   else{
+      fill(0, 48, 32);
+      arc(x + xWidth/3, y + yHeight/2, xWidth/1.5, yHeight, 0, PI, CHORD);
+      fill(0, 200, 0);
+      rect(x, y + yHeight/2, xWidth/6, -yHeight/2);
+      rect(x + xWidth/2, y + yHeight/2, xWidth/6, -yHeight/2);
+      if (xSpeed>0) {
+        circle(x + 5 * xWidth/6, y + yHeight/2, xWidth/3);
+      }
+      if (xSpeed<0) {
+        circle(x - xWidth/6, y + yHeight/2, xWidth/3);
+      }
+   }
   }
   boolean collisionCheck(Goldfish other) {
     return (dist(x + 5 * xWidth/6, y + yHeight/2, other.cx, other.cy)<other.xWidth/4);
@@ -37,7 +52,20 @@ class Turtle extends Animal { //Richie's animals
         x <= 0) {
         xSpeed*= -1;
      }
-    x += xSpeed;
-    y += ySpeed;
-}
+     if(alive){
+        x += xSpeed;
+        y += ySpeed;
+     }
+  }
+  void update(){
+    if(frameCount % 15 == 0){
+      hunger--;
+    }
+    if(hunger <= 0){
+      die();
+    }
+  }
+  void die(){
+    alive = false;
+  }
 }

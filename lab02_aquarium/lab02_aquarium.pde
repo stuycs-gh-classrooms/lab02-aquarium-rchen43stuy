@@ -21,6 +21,7 @@ void draw() {
   background(150);
   t.moveAnimals();
   t.display();
+  t.update();
   textAlign(RIGHT,TOP);
   textSize(20);
   fill(0);
@@ -28,9 +29,17 @@ void draw() {
 }
 
 void mouseClicked() {
-  t.addFishFood(mouseX, mouseY);
+  if(t.clickedOnRock(mouseX,mouseY)){
+    t.petRocks(mouseX,mouseY);
+  }
+  else{
+    t.addFishFood(mouseX, mouseY);
+  }
 }
 void keyPressed(){
+  if(key == '0'){
+    t.addAnimal(mouseX,mouseY);
+  }
   if(key == '1'){
     t.addFish(mouseX,mouseY); //my fish
   }
@@ -44,12 +53,9 @@ void keyPressed(){
     t.addRock(mouseX,mouseY); //Haocheng's rock
   }
   if(key == '5'){
-    t.addCrabHaocheng(mouseX,mouseY); //Haocheng's crab
-  }
-  if(key == '6'){
     t.addGoldFish(mouseX,mouseY); //Richie's Goldfish
   }
-  if(key == '7'){
+  if(key == '6'){
     t.addTurtle(mouseX,mouseY); //Richie's Turtle
   }
 }

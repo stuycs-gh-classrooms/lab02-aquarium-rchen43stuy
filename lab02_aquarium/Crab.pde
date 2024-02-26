@@ -69,5 +69,61 @@ class Crab extends Animal{ //My Animal
     float randomVarianceY = random(-.3,.3);
     xSpeed += randomVarianceX;
     ySpeed += randomVarianceY;
+    if(closestFood() != null){
+      seek(closestFood());
+    }
+  }
+  void update(){
+    if(frameCount % 3 == 0){
+      hunger--;
+    }
+    if(hunger <= 0){
+      die();
+    }
+    if(closestFood() != null){
+      checkEat(closestFood());
+    }    
+  }
+  void seek(Animal a){
+    if(a.x > this.x){
+      if(xSpeed < 5){
+        xSpeed += .1;
+      }
+    }
+    if(a.x < this.x){
+      if(xSpeed > -5){
+        xSpeed -= .1;
+      }
+    }
+    if(a.y > this.y){
+      if(ySpeed < 5){
+        ySpeed += .1;
+      }
+    }
+    if(a.y < this.y){
+      if(ySpeed > -5){
+        ySpeed -= .1;
+      }
+    }
+  }
+  Crab closestFood(){
+    Crab minFood = null;
+    float minDist = 0;
+    for(int i = 0; i < tank.animals.size(); i++){
+      Animal currentAnimal = tank.animals.get(i);
+      if(currentAnimal instanceof Crab){
+        if(currentAnimal != this){
+          if(minFood == null){
+            minFood = (Crab) currentAnimal;
+            minDist = dist(minFood.x,minFood.y,this.x,this.y);
+          }
+          if(dist(currentAnimal.x,currentAnimal.y,this.x,this.y) < minDist){
+            minFood = (Crab) currentAnimal;
+            minDist = dist(minFood.x,minFood.y,this.x,this.y);
+          }
+        }
+      }
+    }
+    return minFood;
   }
 }

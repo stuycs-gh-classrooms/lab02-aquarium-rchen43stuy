@@ -28,25 +28,21 @@ class Tank{
       animals.get(i).move();
     }
   }
+  void update(){
+    for(int i = 0; i < animals.size(); i++){
+      animals.get(i).update();
+    }
+  }
   void addAnimal(int x, int y){
     float xSpeed = random(-2,2);
     float ySpeed = random(-2,2);
     int xSize = 50 + int(random(-10,10));
     int ySize = 25 + int(random(-5,5));
-    int randomRoll = int(random(0,2));
     Animal animal;
     if(y < tankY + tankH - floorH){
-      if(randomRoll == 0){
-        animal = new Animal(x,y,xSpeed,ySpeed,xSize,ySize,this);
-      }
-      else{
-        animal = new Fish(x,y,xSpeed,ySpeed,xSize,ySize,this);
-      }
-    }
-    else{
-      animal = new Crab(x,y,xSpeed,ySpeed,xSize,ySize,this);
-    }
+    animal = new Animal(x,y,xSpeed,ySpeed,xSize,ySize,this);
     animals.add(animal); 
+    }
   }
   void addAnimal(Animal a){
     animals.add(a);
@@ -79,10 +75,6 @@ class Tank{
     Animal animal = new rock(x,y);
     animals.add(animal);
   }
-  void addCrabHaocheng(int x, int y){
-    Animal animal = new crabHaocheng(x,y);
-    animals.add(animal);
-  }
   void addGoldFish(int x, int y){
     Goldfish animal = new Goldfish(x,y);
   }
@@ -97,5 +89,24 @@ class Tank{
     float ySpeed = random(-.2,.2);
     Animal animal = new FishFood(x,y,xSpeed,ySpeed,xWidth,yHeight,this);
     animals.add(animal);
+  }
+  boolean clickedOnRock(int mx, int my){
+    for(int i = 0; i < animals.size(); i++){
+      if(animals.get(i) instanceof rock){
+        rock testrock = (rock) animals.get(i);
+        if(testrock.clickedOn(mx,my)){
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  void petRocks(int mx, int my){
+    for(int i = 0; i < animals.size(); i++){
+      if(animals.get(i) instanceof rock){
+        rock fedrock = (rock) animals.get(i);
+        fedrock.pet(mx,my);
+      }
+    }
   }
 }

@@ -3,6 +3,10 @@ class FishFood extends Animal{
     super(xpos,ypos,xs,ys,xW,yH,t);
     cc = color(200,200,0);
   }
+  void update(){
+  }
+  void eat(){
+  }
   void move(){
     x += xSpeed;
     y += ySpeed;

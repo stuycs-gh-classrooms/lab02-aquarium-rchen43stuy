@@ -33,7 +33,7 @@ class Animal {
     xWidth = 40;
     yHeight = 20;
     alive = true;
-    hunger = 15;
+    hunger = 100;
     cc = color(255, 0, 255);
   }
   void display() {
@@ -42,6 +42,33 @@ class Animal {
   }
   void die(){
     tank.animals.remove(this);
+  }
+  void update(){
+    hunger--;
+    if(hunger < 0){
+      die();
+    }
+    for(int i = 0; i < tank.animals.size(); i++){
+      checkEat(tank.animals.get(i));
+    }
+  }
+  void checkEat(Animal food){
+    if(food != this){
+      if(collisionCheck(food)){
+        hunger += 100;
+        food.die();
+      }
+    }
+  }
+        
+  boolean collisionCheck(Animal food){
+    return (withinX(food) && withinY(food));
+  }
+  boolean withinX(Animal food){
+    return (x <= food.x + food.xWidth) && (x + xWidth >= food.x);
+  }
+  boolean withinY(Animal food){
+    return (y <= food.y + food.yHeight) && (y + yHeight >= food.y);
   }
   void move() {
     x += xSpeed;

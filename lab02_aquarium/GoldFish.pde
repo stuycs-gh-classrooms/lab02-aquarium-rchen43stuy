@@ -28,6 +28,8 @@ class Goldfish extends Animal { //Richie's animals
     fsize = xWidth * yHeight * PI; //recompute size and ratio
     ratio = float(yHeight)/float(xWidth);
   }
+  void update(){
+  }
   void display() {
     if(!STOP){
     hunger-= .1;
@@ -86,10 +88,10 @@ class Goldfish extends Animal { //Richie's animals
     }
   }//collisionCheck
   void die() {
-    alive = !alive;
+    alive = false;
   }
   void perish() {
-    alive = !alive;
+    alive = false;
     perished = true;
   }
   void move(){
